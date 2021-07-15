@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textView:TextView
     private lateinit var button: Button
     private lateinit var button2: Button
+    //private lateinit var s1: String // string can not be null
+    //private var s2: String? = null //string? call e null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +34,11 @@ class MainActivity : AppCompatActivity() {
             //Toast.makeText(this, "COMPUTER SCIENCE PORTAL", Toast.LENGTH_LONG).show()
             //Toast.makeText(applicationContext, "Test", Toast.LENGTH_LONG).show()
             //Toast.makeText(this@MainActivity, "Test", Toast.LENGTH_LONG).show()
-            Toast.makeText(context, "This is a test", Toast.LENGTH_LONG).show()
+            //Toast.makeText(context, "This is a test", Toast.LENGTH_LONG).show()
+
+            val intent = Intent(this, TestActivity::class.java)
+            intent.putExtra("key", "this is 2021")
+            startActivity(intent)
 
         }
 
