@@ -1,8 +1,10 @@
 package app.cupcake.kotlindemo.activity
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -11,27 +13,30 @@ import java.util.logging.Logger
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        val log = Logger.getLogger(MainActivity::class.java.name)
-    }
+    private lateinit var context: Context
+    private lateinit var textView:TextView
+    private lateinit var button: Button
+    private lateinit var button2: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val textView = findViewById(R.id.textView) as TextView
-        val button = findViewById(R.id.button) as Button
+        context = this
+        textView = findViewById(R.id.textView)
+        button = findViewById(R.id.button)
 
         textView.setOnClickListener{
             //Three ways to set a toast
             //Toast.makeText(this, "COMPUTER SCIENCE PORTAL", Toast.LENGTH_LONG).show()
             //Toast.makeText(applicationContext, "Test", Toast.LENGTH_LONG).show()
-            Toast.makeText(this@MainActivity, "Test", Toast.LENGTH_LONG).show()
+            //Toast.makeText(this@MainActivity, "Test", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "This is a test", Toast.LENGTH_LONG).show()
 
         }
 
         button.setOnClickListener{
-
             textView.setText("Button Clicked")
             Toast.makeText(this, "Button Clicked", Toast.LENGTH_LONG).show()
 
@@ -45,33 +50,33 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        log.warning("onStart Called")
+        Log.i("Basic", "On start called")
     }
 
     override fun onRestart() {
         super.onRestart()
-        log.info("OnRestart Called")
+        Log.i("Basic", "On restart called")
     }
 
     override fun onResume() {
         super.onResume()
-        log.info("OnResume Called")
+        Log.i("Basic", "On resume called")
     }
 
 
     override fun onStop() {
         super.onStop()
-        log.info("OnStop Called")
+        Log.i("Basic", "On stop called")
     }
 
     override fun onPause() {
         super.onPause()
-        log.info("OnPause Called")
+        Log.i("Basic", "On pause called")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        log.info("OnDestroy Called")
+        Log.i("Basic", "On destroy called")
     }
 
 }
